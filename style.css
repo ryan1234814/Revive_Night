@@ -606,8 +606,8 @@ p {
 }
 
 .filter-dropdowns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 16px;
 }
 
@@ -624,6 +624,7 @@ p {
 }
 
 .filter-group select {
+  min-width: 280px;
   padding: 12px 16px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-color);
@@ -1300,7 +1301,8 @@ p {
   .hero-title { font-size: 2.2rem; }
   .startups-grid { grid-template-columns: 1fr; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .filter-dropdowns { grid-template-columns: 1fr; }
+  .filter-dropdowns { flex-direction: column; }
+  .filter-group select { width: 100%; min-width: 0; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .problem-banner { flex-direction: column; text-align: center; }
   .flow-container { flex-direction: column; }
