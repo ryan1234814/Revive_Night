@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revive Night — The 15-Hour Hackathon Archive Resurrecting Failed Startups</title>
+  <meta name="description"
+    content="Revive Night — the 15-hour hackathon archive resurrecting failed startups with fresh teams and modern tech stacks.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Canvas for particle animation -->
+  <canvas id="particleCanvas"></canvas>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="logo-text">REVIVE <span class="highlight">NIGHT</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#problem" class="nav-link">Why Startups Die</a>
+        <a href="#solution" class="nav-link">Revival Pipeline</a>
+        <a href="#startups" class="nav-link">Failed Startups</a>
+      </nav>
+
+      <div class="nav-actions">
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>15-Hour Startup Revival Marketplace</span>
+        </div>
+        <h1 class="hero-title">
+          REVIVE <span class="gradient-text">NIGHT</span>
+        </h1>
+        <p class="hero-subheading">
+          The 15-hour hackathon archive resurrecting failed startups with fresh teams and modern tech stacks.
+        </p>
+
+
+    </section>
+
+    <!-- 2. Pipeline Section -->
+    <section id="solution" class="section solution-section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">The Pipeline</span>
+          <h2>How Revive Night Rescues Ideas</h2>
+          <p>Don't start from zero. Pick up where previous founders left off.</p>
+        </div>
+
+        <div class="flow-container">
+          <div class="flow-step">
+            <div class="flow-number">01</div>
+            <div class="flow-content">
+              <i class="fa-solid fa-skull-crossbones flow-icon"></i>
+              <h3>Failed Startup</h3>
+              <p>Great tech or market concept forced to shut down operations.</p>
+            </div>
+          </div>
+
+          <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="flow-step">
+            <div class="flow-number">02</div>
+            <div class="flow-content">
+              <i class="fa-solid fa-box-archive flow-icon"></i>
+              <h3>Archive & Audit</h3>
+              <p>Failure root cause, assets, and tech stack indexed in Revive Night.</p>
+            </div>
+          </div>
+
+          <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="flow-step">
+            <div class="flow-number">03</div>
+            <div class="flow-content">
+              <i class="fa-solid fa-magnifying-glass-chart flow-icon"></i>
+              <h3>Discovery</h3>
+              <p>Builders browse, analyze potential scores, and bookmark targets.</p>
+            </div>
+          </div>
+
+          <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="flow-step">
+            <div class="flow-number">04</div>
+            <div class="flow-content">
+              <i class="fa-solid fa-user-group flow-icon"></i>
+              <h3>Team Formation</h3>
+              <p>Connect with developers, designers, and marketers in 15 hours.</p>
+            </div>
+          </div>
+
+          <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="flow-step highlight-step">
+            <div class="flow-number">05</div>
+            <div class="flow-content">
+              <i class="fa-solid fa-rocket flow-icon"></i>
+              <h3>Revived Startup</h3>
+              <p>Relaunched with sustainable model, fresh team, and new GTM strategy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Vault Section -->
+    <section id="startups" class="section startups-section">
+      <div class="container">
+        <div class="section-header space-between">
+          <div>
+            <span class="section-tag">The Vault</span>
+            <h2>Featured Failed Startups</h2>
+            <p>Browse archived startups, analyze failure reasons, and find your next project.</p>
+          </div>
+          <div class="view-toggle">
+            <button class="toggle-btn active" id="showAllStartupsBtn">All Startups</button>
+            <button class="toggle-btn" id="showBookmarksOnlyBtn">Saved Only (<span id="savedBadge">0</span>)</button>
+          </div>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="filter-card glass-card">
+          <div class="filter-dropdowns">
+            <div class="filter-group">
+              <label for="sectorFilter"><i class="fa-solid fa-layer-group"></i> Sector</label>
+              <select id="sectorFilter">
+                <option value="all">All Sectors</option>
+                <!-- Populated by JS -->
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Startup Cards Grid -->
+        <div class="startups-grid" id="startupsGrid">
+          <!-- Dynamic Startup Cards Rendered by JS matching exact image design -->
+        </div>
+
+        <div id="noResultsState" class="no-results hidden">
+          <i class="fa-solid fa-ghost"></i>
+          <h3>No Startups Match Your Search</h3>
+          <p>Try resetting filters or searching with different keywords.</p>
+          <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Reality Section -->
+    <section id="problem" class="section problem-section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">The Reality</span>
+          <h2>Why Great Ideas Die</h2>
+          <p>95% of startups fail, taking thousands of incredible products into oblivion.</p>
+        </div>
+
+        <div class="grid grid-3 problem-grid">
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-coins"></i></div>
+            <h3>Lack of Funding</h3>
+            <p>Ran out of capital before reaching product-market fit or sustainable unit economics.</p>
+          </div>
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-clock"></i></div>
+            <h3>Wrong Timing</h3>
+            <p>Launched too early before technology mature, or too late against entrenched giants.</p>
+          </div>
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-people-arrows"></i></div>
+            <h3>Co-founder Conflicts</h3>
+            <p>Misaligned vision, equity disputes, or operational friction breaking leadership.</p>
+          </div>
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Poor Marketing</h3>
+            <p>Built a great product but failed to acquire scalable user channels cost-effectively.</p>
+          </div>
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-battery-quarter"></i></div>
+            <h3>Founder Burnout</h3>
+            <p>Relentless pressure and exhaustion leading team to abandon promising momentum.</p>
+          </div>
+          <div class="glass-card problem-card">
+            <div class="problem-icon"><i class="fa-solid fa-shuffle"></i></div>
+            <h3>Pivot Failure</h3>
+            <p>Pivoted too slowly or chose the wrong direction when initial thesis ran out of steam.</p>
+          </div>
+        </div>
+
+        <div class="problem-banner">
+          <div class="banner-stat">95%</div>
+          <div class="banner-text">
+            <h3>Of Startups Fail Every Year</h3>
+            <p>Thousands of validated codebases, designs, domain names, and market research studies disappear. Revive
+              Night rescues them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#hero">Home</a>
+        <a href="#problem">Why Startups Die</a>
+        <a href="#solution">Revival Pipeline</a>
+        <a href="#startups">Failed Startups</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-flex">
+        <span>&copy; 2026 Revive Night. Built for the 15-hour hackathon.</span>
+        <div class="legal-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 5. Startup Detail Modal -->
+  <div class="modal-backdrop" id="startupModal" role="dialog" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-content" id="modalBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- User Sign In Modal -->
+  <div class="modal-backdrop" id="authModal" role="dialog" aria-hidden="true">
+    <div class="modal-container modal-sm">
+      <button class="modal-close" id="authModalCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-auth-content center">
+        <div class="auth-icon"><i class="fa-brands fa-google"></i></div>
+        <h2>Sign In to Revive Night</h2>
+        <p>Save failed startups, track team interests, and post revival projects.</p>
+        <button class="btn btn-primary btn-lg btn-block" onclick="simulateGoogleLogin()">
+          <i class="fa-brands fa-google"></i> Continue with Google
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JS -->
+  <script src="app.js"></script>
+</body>
+
+</html>
