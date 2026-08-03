@@ -58,7 +58,7 @@ const initialStartups = [
     funding: '$18.0M',
     fundingRaw: 18000000,
     rocketScore: '11,240',
-    valueProposition: 'A consumer visual-search app letting users search using photos/drawings.',
+    valueProposition: 'An AI-powered consumer platform that enabled users to discover information through alternative forms of input rather than traditional text search.',
     causeOfDeath: "Struggled to differentiate from Google Lens/Pinterest visual search and couldn't build a retention habit loop beyond novelty use.",
     riseYear: 2020,
     fallYear: 2024,
@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Populate Sector Filter Dropdown dynamically
 function populateFilterDropdowns() {
   const sectorSelect = document.getElementById('sectorFilter');
-
   const sectors = Array.from(new Set(startupsState.map(s => s.sector))).sort();
 
   sectors.forEach(sec => {
@@ -286,7 +285,7 @@ function renderStartupsGrid() {
         <div class="card-title-row">
           <div>
             <h3 class="card-title">${item.name}</h3>
-            <div class="card-country">\\${item.country}</div>
+            <div class="card-country">${item.country}</div>
           </div>
         </div>
       </div>
@@ -333,10 +332,12 @@ function incrementInterest(event, id) {
 // Reset Filters
 function resetFilters() {
   document.getElementById('sectorFilter').value = 'all';
+
   const searchInput = document.getElementById('searchInput');
-  if (searchInput) searchInput.value = '';
   const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (searchInput) searchInput.value = '';
   if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+
   renderStartupsGrid();
 }
 
