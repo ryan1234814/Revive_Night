@@ -107,7 +107,7 @@
             <div class="flow-content">
               <i class="fa-solid fa-magnifying-glass-chart flow-icon"></i>
               <h3>Discovery</h3>
-              <p>Builders browse, analyze potential scores, and bookmark targets.</p>
+              <p>Builders browse, analyze potential scores, and shortlist targets.</p>
             </div>
           </div>
 
@@ -145,14 +145,16 @@
             <h2>Featured Failed Startups</h2>
             <p>Browse archived startups, analyze failure reasons, and find your next project.</p>
           </div>
-          <div class="view-toggle">
-            <button class="toggle-btn active" id="showAllStartupsBtn">All Startups</button>
-            <button class="toggle-btn" id="showBookmarksOnlyBtn">Saved Only (<span id="savedBadge">0</span>)</button>
-          </div>
         </div>
 
         <!-- Filter and Search Bar -->
         <div class="filter-card glass-card">
+          <div class="filter-search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search startups by name, sector, or cause of death..."
+              autocomplete="off">
+            <button class="clear-search hidden" id="clearSearchBtn" type="button" aria-label="Clear search">&times;</button>
+          </div>
           <div class="filter-dropdowns">
             <div class="filter-group">
               <label for="sectorFilter"><i class="fa-solid fa-layer-group"></i> Sector</label>
@@ -273,7 +275,7 @@
       <div class="modal-auth-content center">
         <div class="auth-icon"><i class="fa-brands fa-google"></i></div>
         <h2>Sign In to Revive Night</h2>
-        <p>Save failed startups, track team interests, and post revival projects.</p>
+        <p>Track team interests and post revival projects.</p>
         <button class="btn btn-primary btn-lg btn-block" onclick="simulateGoogleLogin()">
           <i class="fa-brands fa-google"></i> Continue with Google
         </button>

@@ -1,7 +1,7 @@
 /* 
   Revive Night - Main JavaScript Application Logic
   Contains Startup dataset (PRD + PDF + Reference Image), dynamic UI rendering,
-  exact card structure matching attached screenshot, filters, search, bookmarking,
+  exact card structure matching attached screenshot, filters, search,
   modal views, community interactions, and canvas particle background.
 */
 
@@ -199,14 +199,12 @@ const initialStartups = [
 ];
 // Application State
 let startupsState = [...initialStartups];
-let savedStartupIds = JSON.parse(localStorage.getItem('revive_saved_startups') || '[]');
 
 // Initialize DOM Events and Render
 document.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
   populateFilterDropdowns();
   renderStartupsGrid();
-  updateSavedBadges();
   setupEventListeners();
 });
 
@@ -230,16 +228,27 @@ function renderStartupsGrid() {
   const noResults = document.getElementById('noResultsState');
 
   const sectorVal = document.getElementById('sectorFilter').value;
-  const showBookmarksOnly = document.getElementById('showBookmarksOnlyBtn').classList.contains('active');
+  const searchInput = document.getElementById('searchInput');
+  const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
 
   let filtered = startupsState.filter(item => {
     // Sector match
     const matchesSector = sectorVal === 'all' || item.sector === sectorVal;
 
-    // Bookmarks match
-    const matchesBookmark = !showBookmarksOnly || savedStartupIds.includes(item.id);
+    // Search match (name, sector, country, value proposition, cause of death, failure tag)
+    const searchableFields = [
+      item.name,
+      item.sector,
+      item.country,
+      item.valueProposition,
+      item.causeOfDeath,
+      item.failureCategoryTag
+    ];
+    const matchesSearch = !searchTerm || searchableFields.some(field =>
+      field && field.toLowerCase().includes(searchTerm)
+    );
 
-    return matchesSector && matchesBookmark;
+    return matchesSector && matchesSearch;
   });
 
   grid.innerHTML = '';
@@ -252,7 +261,6 @@ function renderStartupsGrid() {
   }
 
   filtered.forEach(item => {
-    const isSaved = savedStartupIds.includes(item.id);
     const cardEl = document.createElement('div');
     cardEl.className = 'startup-card-container';
     cardEl.style.setProperty('--sector-color', item.sectorColor || '#ffa502');
@@ -312,19 +320,6 @@ function renderStartupsGrid() {
   });
 }
 
-// Toggle Startup Bookmark / Save
-function toggleBookmark(event, id) {
-  event.stopPropagation();
-  if (savedStartupIds.includes(id)) {
-    savedStartupIds = savedStartupIds.filter(item => item !== id);
-  } else {
-    savedStartupIds.push(id);
-  }
-  localStorage.setItem('revive_saved_startups', JSON.stringify(savedStartupIds));
-  updateSavedBadges();
-  renderStartupsGrid();
-}
-
 // Increment "I'm Interested" Counter
 function incrementInterest(event, id) {
   event.stopPropagation();
@@ -335,20 +330,13 @@ function incrementInterest(event, id) {
   }
 }
 
-// Update Saved Count Badges
-function updateSavedBadges() {
-  const count = savedStartupIds.length;
-  const savedCountEl = document.getElementById('savedCount');
-  const savedBadgeEl = document.getElementById('savedBadge');
-  if (savedCountEl) savedCountEl.textContent = count;
-  if (savedBadgeEl) savedBadgeEl.textContent = count;
-}
-
 // Reset Filters
 function resetFilters() {
   document.getElementById('sectorFilter').value = 'all';
-  document.getElementById('showAllStartupsBtn').classList.add('active');
-  document.getElementById('showBookmarksOnlyBtn').classList.remove('active');
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = '';
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
   renderStartupsGrid();
 }
 
@@ -358,7 +346,6 @@ function openStartupModal(id) {
   if (!startup) return;
 
   const modalBody = document.getElementById('modalBody');
-  const isSaved = savedStartupIds.includes(startup.id);
 
   modalBody.innerHTML = `
     <div class="modal-header-badge" style="background-color: ${startup.sectorColor}; color: #000;">
@@ -382,12 +369,6 @@ function openStartupModal(id) {
       <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable</h4>
       <p style="color: #ffffff; font-size: 1rem; line-height: 1.6;">${startup.expectedDeliverable}</p>
     </div>
-
-    <div style="display: flex; gap: 16px; margin-top: 30px;">
-      <button class="btn btn-secondary btn-lg" onclick="toggleBookmark(event, '${startup.id}'); openStartupModal('${startup.id}');">
-        <i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark"></i> ${isSaved ? 'Saved' : 'Save'}
-      </button>
-    </div>
   `;
 
   document.getElementById('startupModal').classList.add('active');
@@ -402,24 +383,25 @@ function setupEventListeners() {
   // Filter Listeners
   document.getElementById('sectorFilter').addEventListener('change', renderStartupsGrid);
 
-  // Bookmark Toggle Buttons
-  document.getElementById('showAllStartupsBtn').addEventListener('click', (e) => {
-    document.getElementById('showAllStartupsBtn').classList.add('active');
-    document.getElementById('showBookmarksOnlyBtn').classList.remove('active');
-    renderStartupsGrid();
-  });
+  // Search Listeners
+  const searchInput = document.getElementById('searchInput');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
 
-  document.getElementById('showBookmarksOnlyBtn').addEventListener('click', (e) => {
-    document.getElementById('showBookmarksOnlyBtn').classList.add('active');
-    document.getElementById('showAllStartupsBtn').classList.remove('active');
-    renderStartupsGrid();
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      if (clearSearchBtn) clearSearchBtn.classList.toggle('hidden', searchInput.value.trim().length === 0);
+      renderStartupsGrid();
+    });
+  }
 
-  const bookmarkTabBtn = document.getElementById('bookmarkTabBtn');
-  if (bookmarkTabBtn) {
-    bookmarkTabBtn.addEventListener('click', () => {
-      document.getElementById('startups').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('showBookmarksOnlyBtn').click();
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        renderStartupsGrid();
+        searchInput.focus();
+      }
     });
   }
 
