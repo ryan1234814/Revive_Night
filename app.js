@@ -355,17 +355,6 @@ function openStartupModal(id) {
     <h2 class="modal-title">${startup.name}</h2>
     <p class="modal-subtitle">Raised ${startup.funding} &bull; Active ${startup.riseYear} - ${startup.fallYear}</p>
 
-    <div class="modal-section">
-      <h4><i class="fa-solid fa-lightbulb"></i> Overview & Value Proposition</h4>
-      <p style="color: #ffffff; font-size: 1.05rem; line-height: 1.6;">${startup.valueProposition}</p>
-    </div>
-
-    <div class="modal-section" style="border-color: rgba(255, 71, 87, 0.4);">
-      <h4 style="color: var(--accent-primary);"><i class="fa-solid fa-skull"></i> Why It Failed (Root Cause Analysis)</h4>
-      <p style="color: #ffffff; font-size: 1rem; line-height: 1.6;">${startup.causeOfDeath}</p>
-      <span class="helper-text" style="color: var(--accent-orange);">Primary Failure Vector: ${startup.failureCategoryTag}</span>
-    </div>
-
     <div class="modal-section" style="border-color: rgba(0, 184, 148, 0.4);">
       <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable</h4>
       <p style="color: #ffffff; font-size: 1rem; line-height: 1.6;">${startup.expectedDeliverable}</p>
