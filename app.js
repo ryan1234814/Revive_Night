@@ -26,7 +26,7 @@ const initialStartups = [
     failureCategoryTag: 'VIRTUAL FATIGUE',
     failureCategoryColor: '#2f3542',
     interestedCount: 198,
-    expectedDeliverable: ["Build: a small status widget with 3 buttons \u2014 Focus / Available / Away. Each person sets their own status. No video, no office map", "Landing page: one clean page explaining what the widget does", "One-pager: why self-set status is less tiring than always-on video, and how it works alongside Slack and Zoom instead of replacing them"]
+    expectedDeliverable: ["A lightweight status widget with three states: Focus, Available and Away. Each teammate sets their own status — no video feeds and no office floorplan.", "Position it as a companion to Slack and Zoom rather than a replacement: fewer interruptions, no surveillance feel, and teams keep the tools they already use."]
   },
   {
     id: 'querybase',
@@ -47,7 +47,7 @@ const initialStartups = [
     failureCategoryTag: 'MONETIZATION & SCALE',
     failureCategoryColor: '#57606f',
     interestedCount: 87,
-    expectedDeliverable: ["Build: a question-and-answer page for one legal topic in one state \u2014 3 sample questions with ready answers and fake source links", "Landing page: one clean page explaining the service", "One-pager: keep answers free for users and charge legal-aid NGOs a monthly fee (fixes the ad-only income and one-city limit)"]
+    expectedDeliverable: ["A question-and-answer tool covering one legal topic in one state, with a few sample questions, clear answers and cited sources.", "Keep the answers free for users and license the platform to legal-aid NGOs on a monthly subscription — a revenue model the original never established."]
   },
   {
     id: 'visionarysearch',
@@ -68,7 +68,7 @@ const initialStartups = [
     failureCategoryTag: 'NO RETENTION HABIT',
     failureCategoryColor: '#3c6382',
     interestedCount: 264,
-    expectedDeliverable: ["Build: a demo where you upload one photo and get 3 matching products (fake data, e.g., fashion items)", "Landing page: one clean page where users can save items they like", "One-pager: how saved items and price-drop alerts bring users back, plus earning from shop referral links (fixes the try-once-then-forget problem)"]
+    expectedDeliverable: ["An image-search demo for a single vertical such as fashion: the user uploads a photo and gets a few matching products.", "Add collections and price-drop alerts so users have a reason to return, fixing the one-time novelty use that drove the original's churn."]
   },
   {
     id: 'eduspark',
@@ -89,7 +89,7 @@ const initialStartups = [
     failureCategoryTag: 'DEMAND COLLAPSE',
     failureCategoryColor: '#b71540',
     interestedCount: 145,
-    expectedDeliverable: ["Build: one class booking page with a sample class video (a YouTube link is fine) and a small quiz with instant feedback", "Landing page: one clean page for parents to book a class", "One-pager: sell classes to schools in bundles instead of to parents one by one (fixes the post-COVID demand drop and high running costs)"]
+    expectedDeliverable: ["A class-booking page with a sample recorded lesson and a short quiz that gives instant feedback.", "Sell classes to schools as bundled packages instead of marketing to individual parents — the demand channel the original never developed."]
   },
   {
     id: 'omnihealth-ai',
@@ -110,7 +110,7 @@ const initialStartups = [
     failureCategoryTag: 'UNPROFITABLE CONTRACTS',
     failureCategoryColor: '#801818',
     interestedCount: 512,
-    expectedDeliverable: ["Build: a 3-step symptom form that shows a mock result with a clear 'not a real diagnosis' note (use fake data)", "Landing page: one clean page explaining the tool", "One-pager: charge clinics a fixed fee per consultation instead of risky contracts, plus a short plan to prove the AI is accurate"]
+    expectedDeliverable: ["A 3-step symptom form that returns a sample triage result, with a clear 'not a medical diagnosis' disclaimer throughout.", "Charge clinics a fixed fee per consultation instead of outcome-based contracts, and include a short plan for validating accuracy — the concern that undermined the original."]
   },
   {
     id: 'automedi',
@@ -131,7 +131,7 @@ const initialStartups = [
     failureCategoryTag: 'OVER-PROMISED SCOPE',
     failureCategoryColor: '#b71540',
     interestedCount: 420,
-    expectedDeliverable: ["Build: a mock tracker for one hospital task only \u2014 insurance pre-approval \u2014 with a sample patient moving from Submitted to Approved and fake time-saved numbers", "Landing page: one clean page explaining the tool", "One-pager: do one task really well and charge per claim, instead of promising to automate everything in a hospital"]
+    expectedDeliverable: ["A tracker for one hospital workflow, insurance pre-approval, following a sample patient from Submitted to Approved.", "Do one workflow well and charge per claim instead of promising to automate an entire hospital — the overreach that sank the original."]
   },
   {
     id: 'rescuermap',
@@ -152,7 +152,7 @@ const initialStartups = [
     failureCategoryTag: 'GOVT SALES BOTTLENECK',
     failureCategoryColor: '#e67e22',
     interestedCount: 230,
-    expectedDeliverable: ["Build: a map view (Leaflet or Mapbox) showing 2 wildfire zones and one evacuation route with sample data", "Landing page: one clean page explaining the tool", "One-pager: offer a free version to volunteers and community teams first, so the business does not depend on slow government sales"]
+    expectedDeliverable: ["A map view showing two sample wildfire zones and an evacuation route, built with Leaflet or Mapbox using static data.", "Offer a free tier to volunteer and community response teams so growth does not depend on slow government procurement — the bottleneck the original faced."]
   },
   {
     id: 'quickpay',
@@ -173,7 +173,7 @@ const initialStartups = [
     failureCategoryTag: 'HIGH BURN / NO MOAT',
     failureCategoryColor: '#b71540',
     interestedCount: 680,
-    expectedDeliverable: ["Build: a checkout button stores can copy-paste into their page, with fake success and failure screens (no real payments)", "Landing page: one clean page explaining the button", "One-pager: ship it as a Shopify or WooCommerce plugin with a flat monthly fee (easy for stores to adopt, steady income for you)"]
+    expectedDeliverable: ["A copy-paste checkout button with mock success and failure screens; no real payment processing.", "Distribute it as a Shopify or WooCommerce plugin with a flat monthly fee, meeting merchants inside the platforms they already use — something the original never did."]
   },
   {
     id: 'nextgen-academy',
@@ -194,7 +194,7 @@ const initialStartups = [
     failureCategoryTag: 'PHYSICAL OVERHEAD BURN',
     failureCategoryColor: '#d35400',
     interestedCount: 310,
-    expectedDeliverable: ["Build: a clickable lesson path for one subject and grade (e.g., Grade 5 Math with 3 levels and a progress bar)", "Landing page: one clean page explaining the product", "One-pager: sell the learning software to schools as a subscription instead of running costly physical schools"]
+    expectedDeliverable: ["A clickable lesson path for one subject and grade, for example Grade 5 Maths, with three levels and a progress bar.", "License the software to schools on a subscription instead of operating physical campuses, removing the real-estate overhead that drained the original."]
   }
 ];
 // Application State
@@ -360,7 +360,7 @@ function openStartupModal(id) {
     <p class="modal-subtitle">Raised ${startup.funding} &bull; Active ${startup.riseYear} - ${startup.fallYear}</p>
 
     <div class="modal-section" style="border-color: rgba(0, 184, 148, 0.4);">
-      <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable (12-hr Hackathon)</h4>
+      <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable</h4>
       ${deliverableHtml}
     </div>
   `;
