@@ -26,7 +26,7 @@ const initialStartups = [
     failureCategoryTag: 'VIRTUAL FATIGUE',
     failureCategoryColor: '#2f3542',
     interestedCount: 198,
-    expectedDeliverable: 'A working Slack/Teams-embedded presence prototype, one AI nudge feature, and a one-pager on why this avoids Zoom/virtual-office fatigue.'
+    expectedDeliverable: ["Build: a small status widget with 3 buttons \u2014 Focus / Available / Away. Each person sets their own status. No video, no office map", "Landing page: one clean page explaining what the widget does", "One-pager: why self-set status is less tiring than always-on video, and how it works alongside Slack and Zoom instead of replacing them"]
   },
   {
     id: 'querybase',
@@ -47,7 +47,7 @@ const initialStartups = [
     failureCategoryTag: 'MONETIZATION & SCALE',
     failureCategoryColor: '#57606f',
     interestedCount: 87,
-    expectedDeliverable: 'A working Q&A demo scoped to one legal topic in one state, proof that answers are citation-grounded, and a licensing/GTM slide aimed at legal-aid organizations.'
+    expectedDeliverable: ["Build: a question-and-answer page for one legal topic in one state \u2014 3 sample questions with ready answers and fake source links", "Landing page: one clean page explaining the service", "One-pager: keep answers free for users and charge legal-aid NGOs a monthly fee (fixes the ad-only income and one-city limit)"]
   },
   {
     id: 'visionarysearch',
@@ -68,7 +68,7 @@ const initialStartups = [
     failureCategoryTag: 'NO RETENTION HABIT',
     failureCategoryColor: '#3c6382',
     interestedCount: 264,
-    expectedDeliverable: 'A working snap-to-search demo in one vertical and a commerce/affiliate monetization slide.'
+    expectedDeliverable: ["Build: a demo where you upload one photo and get 3 matching products (fake data, e.g., fashion items)", "Landing page: one clean page where users can save items they like", "One-pager: how saved items and price-drop alerts bring users back, plus earning from shop referral links (fixes the try-once-then-forget problem)"]
   },
   {
     id: 'eduspark',
@@ -89,7 +89,7 @@ const initialStartups = [
     failureCategoryTag: 'DEMAND COLLAPSE',
     failureCategoryColor: '#b71540',
     interestedCount: 145,
-    expectedDeliverable: "A booking-plus-live-class demo, one AI feedback feature, and a school-partnership GTM slide that avoids Crejofun's pure-D2C demand collapse."
+    expectedDeliverable: ["Build: one class booking page with a sample class video (a YouTube link is fine) and a small quiz with instant feedback", "Landing page: one clean page for parents to book a class", "One-pager: sell classes to schools in bundles instead of to parents one by one (fixes the post-COVID demand drop and high running costs)"]
   },
   {
     id: 'omnihealth-ai',
@@ -110,7 +110,7 @@ const initialStartups = [
     failureCategoryTag: 'UNPROFITABLE CONTRACTS',
     failureCategoryColor: '#801818',
     interestedCount: 512,
-    expectedDeliverable: 'A symptom-intake-to-triage demo showing visible AI confidence/rationale, an accuracy-benchmark report, and a unit-economics slide for the B2B contract model.'
+    expectedDeliverable: ["Build: a 3-step symptom form that shows a mock result with a clear 'not a real diagnosis' note (use fake data)", "Landing page: one clean page explaining the tool", "One-pager: charge clinics a fixed fee per consultation instead of risky contracts, plus a short plan to prove the AI is accurate"]
   },
   {
     id: 'automedi',
@@ -131,7 +131,7 @@ const initialStartups = [
     failureCategoryTag: 'OVER-PROMISED SCOPE',
     failureCategoryColor: '#b71540',
     interestedCount: 420,
-    expectedDeliverable: 'A single-workflow demo (e.g. prior-auth automation) with a measurable time/cost-saved metric, plus an ROI-based pricing slide.'
+    expectedDeliverable: ["Build: a mock tracker for one hospital task only \u2014 insurance pre-approval \u2014 with a sample patient moving from Submitted to Approved and fake time-saved numbers", "Landing page: one clean page explaining the tool", "One-pager: do one task really well and charge per claim, instead of promising to automate everything in a hospital"]
   },
   {
     id: 'rescuermap',
@@ -152,7 +152,7 @@ const initialStartups = [
     failureCategoryTag: 'GOVT SALES BOTTLENECK',
     failureCategoryColor: '#e67e22',
     interestedCount: 230,
-    expectedDeliverable: 'A live zone-mapping and evacuation-routing demo, one AI-spread-prediction feature, and a CAD-integration/GTM slide.'
+    expectedDeliverable: ["Build: a map view (Leaflet or Mapbox) showing 2 wildfire zones and one evacuation route with sample data", "Landing page: one clean page explaining the tool", "One-pager: offer a free version to volunteers and community teams first, so the business does not depend on slow government sales"]
   },
   {
     id: 'quickpay',
@@ -173,7 +173,7 @@ const initialStartups = [
     failureCategoryTag: 'HIGH BURN / NO MOAT',
     failureCategoryColor: '#b71540',
     interestedCount: 680,
-    expectedDeliverable: 'An embeddable checkout demo with a measured conversion-lift metric, one fraud-scoring feature, and a distribution-via-marketplace GTM slide.'
+    expectedDeliverable: ["Build: a checkout button stores can copy-paste into their page, with fake success and failure screens (no real payments)", "Landing page: one clean page explaining the button", "One-pager: ship it as a Shopify or WooCommerce plugin with a flat monthly fee (easy for stores to adopt, steady income for you)"]
   },
   {
     id: 'nextgen-academy',
@@ -194,7 +194,7 @@ const initialStartups = [
     failureCategoryTag: 'PHYSICAL OVERHEAD BURN',
     failureCategoryColor: '#d35400',
     interestedCount: 310,
-    expectedDeliverable: "An adaptive-lesson-path demo for one subject, one early-warning AI feature, and a SaaS-licensing GTM slide contrasting with AltSchool's real-estate-heavy model."
+    expectedDeliverable: ["Build: a clickable lesson path for one subject and grade (e.g., Grade 5 Math with 3 levels and a progress bar)", "Landing page: one clean page explaining the product", "One-pager: sell the learning software to schools as a subscription instead of running costly physical schools"]
   }
 ];
 // Application State
@@ -348,6 +348,10 @@ function openStartupModal(id) {
 
   const modalBody = document.getElementById('modalBody');
 
+  const deliverableHtml = Array.isArray(startup.expectedDeliverable)
+    ? `<ul style="margin:0; padding-left:20px; color:#ffffff; font-size:1rem; line-height:1.6; list-style: disc;"><li>${startup.expectedDeliverable.join('</li><li>')}</li></ul>`
+    : `<p style="color: #ffffff; font-size: 1rem; line-height: 1.6;">${startup.expectedDeliverable}</p>`;
+
   modalBody.innerHTML = `
     <div class="modal-header-badge" style="background-color: ${startup.sectorColor}; color: #000;">
       ${startup.sector} &bull; ${startup.country}
@@ -356,8 +360,8 @@ function openStartupModal(id) {
     <p class="modal-subtitle">Raised ${startup.funding} &bull; Active ${startup.riseYear} - ${startup.fallYear}</p>
 
     <div class="modal-section" style="border-color: rgba(0, 184, 148, 0.4);">
-      <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable</h4>
-      <p style="color: #ffffff; font-size: 1rem; line-height: 1.6;">${startup.expectedDeliverable}</p>
+      <h4 style="color: var(--accent-green);"><i class="fa-solid fa-hammer"></i> Recommended Revival Deliverable (12-hr Hackathon)</h4>
+      ${deliverableHtml}
     </div>
   `;
 
